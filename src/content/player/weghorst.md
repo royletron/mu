@@ -1,6 +1,6 @@
 ---
 name: Wout Weghorst
-nickname: Da Showboat.
+nickname: The Workhorse.
 from: 🇳🇱
 order: 0
 position:
