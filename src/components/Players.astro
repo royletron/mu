@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Player from "./Player.astro";
+import SectionHeader from "./SectionHeader.astro";
+
+const collection = await getCollection("player");
+const allPlayers = collection.sort((a, b) => a.data.order - b.data.order);
+const mngrs = allPlayers.filter((p) => p.data.position.area === "MAN");
+const gks = allPlayers.filter((p) => p.data.position.area === "GK");
+const defs = allPlayers.filter((p) => p.data.position.area === "DEF");
+const mids = allPlayers.filter((p) => p.data.position.area === "MID");
+const atks = allPlayers.filter((p) => p.data.position.area === "ATK");
+---
+
+<SectionHeader title="Manager" />
+{mngrs.map((p) => <Player player={p} />)}
+
+<SectionHeader title="Goalkeepers" />
+{gks.map((p) => <Player player={p} />)}
+
+<SectionHeader title="Defenders" />
+{defs.map((p) => <Player player={p} />)}
+
+<SectionHeader title="Midfielders" />
+{mids.map((p) => <Player player={p} />)}
+
+<SectionHeader title="Attackers" />
+{atks.map((p) => <Player player={p} />)}

@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Block from "./Block.astro";
+
+export interface Props {
+  player: CollectionEntry<"player">;
+}
+
+const { player } = Astro.props;
+const { Content } = await player.render();
+---
+
+<Block
+  image={player.data.image}
+  title={`${player.data.name} ${player.data.from} · ${player.data.position.short} (${player.data.position.name})`}
+  subtitle={"yo"}
+  nickname={player.data.nickname}
+  best={player.data.best}
+  worst={player.data.worst}
+>
+  <Content />
+</Block>
